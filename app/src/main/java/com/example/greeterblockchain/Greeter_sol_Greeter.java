@@ -28,7 +28,7 @@ import org.web3j.tx.TransactionManager;
  * <p>Auto generated code.
  * <p><strong>Do not modify!</strong>
  * <p>Please use the <a href="https://docs.web3j.io/command_line.html">web3j command line tools</a>,
- * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the 
+ * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the
  * <a href="https://github.com/web3j/web3j/tree/master/codegen">codegen module</a> to update.
  *
  * <p>Generated with web3j version 3.4.0.
@@ -60,18 +60,25 @@ public class Greeter_sol_Greeter extends Contract {
 
     public RemoteCall<TransactionReceipt> changeGreeting(String _greeting) {
         final Function function = new Function(
-                FUNC_CHANGEGREETING, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_greeting)), 
+                FUNC_CHANGEGREETING,
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_greeting)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
-    public RemoteCall<TransactionReceipt> greet() {
-        final Function function = new Function(
-                FUNC_GREET, 
-                Arrays.<Type>asList(), 
-                Collections.<TypeReference<?>>emptyList());
-        return executeRemoteCallTransaction(function);
+    //    public RemoteCall<TransactionReceipt> greet() {
+//        final Function function = new Function(
+//                FUNC_GREET,
+//                Arrays.<Type>asList(),
+//                Collections.<TypeReference<?>>emptyList());
+//        return executeRemoteCallTransaction(function);
+//    }
+    public RemoteCall<String> greet() {
+        final Function function = new Function(FUNC_GREET,
+                Arrays.<Type>asList(),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {
+                }));
+        return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public static Greeter_sol_Greeter load(String contractAddress, Web3j web3j, Credentials credentials, BigInteger gasPrice, BigInteger gasLimit) {
